@@ -5,6 +5,7 @@ class TaskProvider with ChangeNotifier {
   List<CheckBoxItemListModel> taskList = [];
   List<CheckBoxItemListModel> removedTasks = [];
   List indexList = [];
+  List documentList=[];
 
   void addTask(CheckBoxItemListModel item) {
     taskList.add(item);
@@ -36,5 +37,13 @@ class TaskProvider with ChangeNotifier {
   void removeChecksIndex(index) {
     indexList.remove(index);
     notifyListeners();
+  }
+
+  void getCheckedDocuments(bool value,String id){
+    if(value){
+      documentList.add(id);
+    }else{
+       documentList.remove(id);
+    }
   }
 }

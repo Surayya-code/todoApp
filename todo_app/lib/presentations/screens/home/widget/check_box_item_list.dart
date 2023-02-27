@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/providers/task_provider.dart';
 import 'package:todo_app/styles/app_text_styles.dart';
 import '../../../../themes/app_colors.dart';
-import '../viewmodels/checkbox_list_item_model.dart';
 
 class CheckBoxItemList extends StatefulWidget {
   final TaskProvider taskProvider;
-  final CheckBoxItemListModel item;
+  final Map item;
   final int index;
-  final List<CheckBoxItemListModel> taskList;
+  final List taskList;
   
   const CheckBoxItemList({
     super.key,
@@ -23,28 +22,31 @@ class CheckBoxItemList extends StatefulWidget {
 }
 
 class _CheckBoxItemListState extends State<CheckBoxItemList> {
+     bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
     return CheckboxListTile(
-      value: widget.taskList[widget.index].isChecked,
+     // value: widget.item['isChecked'],
+        value: isChecked,
       controlAffinity: ListTileControlAffinity.leading,
       tileColor: AppColors.tileColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      title: Text(widget.item.title,
-        style: AppTextStyles.listTileTitleStyle(widget.taskList[widget.index].isChecked),
+      title: Text(widget.item['title'],
+        style: AppTextStyles.listTileTitleStyle(isChecked),
       ),
       subtitle: Text(
-        widget.item.subtitle,
-        style: AppTextStyles.listTileSubtitleStyle(false),
+        widget.item['subtitle'],
+        style: AppTextStyles.listTileSubtitleStyle(isChecked),
       ),
       onChanged: (value) {
-        widget.taskList[widget.index].isChecked = value!;
-        if(value){
-          widget.taskProvider.addChecksIndex(widget.index);
-        }else{
-          widget.taskProvider.removeChecksIndex(widget.index);
-        }
+        isChecked=value!;          
+        //widget.taskList[widget.index]['isChecked'] = value;
+        // if(value){
+        //   widget.taskProvider.addChecksIndex(widget.index);
+        // }else{
+        //   widget.taskProvider.removeChecksIndex(widget.index);
+        // }
         setState(() {
           
         });

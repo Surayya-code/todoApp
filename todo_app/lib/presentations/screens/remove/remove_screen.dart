@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/presentations/screens/home/widget/check_box_item_list.dart';
 import 'package:todo_app/providers/task_provider.dart';
 import 'package:todo_app/styles/app_text_styles.dart';
 
@@ -54,14 +53,14 @@ class RemoveScreen extends StatelessWidget {
             },
             child: GestureDetector(
               onLongPress: () {
-                print('longpressed');
+                //print('longpressed');
               },
-              child: CheckBoxItemList(
-                index: index,
-                item: item,
-                taskProvider: taskProvider,
-                taskList: taskProvider.removedTasks,
-              ),
+              // child: CheckBoxItemList(
+              //   index: index,
+              //   item: item,
+              //   taskProvider: taskProvider,
+              //   taskList: taskProvider.removedTasks,
+              // ),
             ),
           );
         },
